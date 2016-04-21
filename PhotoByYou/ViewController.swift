@@ -62,15 +62,30 @@ extension ViewController:SFSafariViewControllerDelegate{
     }
     
     func safariLogin(notification:NSNotification){
+        defer{
+            if let controller = safariController {
+               removeHiddenSafariViewController(controller)
+            }
+        }
         let url = notification.object as? NSURL
         
         print("scheme :\(url?.scheme),query: \(url?.query)")
         lblStatus.text = url?.query
-        guard let controller = safariController else {
+        guard let code = extractCode(url?.query) else {
             return
         }
         
-        removeHiddenSafariViewController(controller)
+        requestAccessToken(code) { (inner) in
+            do{
+                let accessToken = try inner()
+                print(accessToken)
+            }catch let error as NSError{
+                print(error.localizedDescription)
+            }
+            
+            
+        }
+        
         
     }
     
@@ -112,7 +127,7 @@ extension ViewController:SFSafariViewControllerDelegate{
     }
     
     func delay(seconds:Double,block:()->()) {
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * UInt64(seconds)))
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * seconds))
         dispatch_after(time, dispatch_get_main_queue(), block)
         
     }
@@ -139,5 +154,50 @@ extension ViewController:SFSafariViewControllerDelegate{
             self.removeSafariController()
         }
     }
+}
+
+extension ViewController{
+    func extractCode(query:String?) -> String? {
+        guard let query = query else {
+            return nil
+        }
+        return query.componentsSeparatedByString("=").last
+    }
+    
+    func requestAccessToken(code:String,completion:(inner:()throws ->String)->()){
+        let manager = Manager.sharedInstance
+        let params = ["client_id":kClientId,
+                      "client_secret":kClientSerectId,
+                      "grant_type": "authorization_code",
+                      "redirect_uri":kRedirectURI,
+                      "code":code]
+        manager.request(.POST,
+            APIType.RequestAccessToken.URLRequest,
+            parameters: params).response
+            { (_, _, data, error) in
+                
+            guard let data = data else{
+                completion(inner: {throw  NSError(domain: "com.test", code: 7548, userInfo: [NSLocalizedDescriptionKey:"No Data!!!"])})
+                return
+            }
+            
+            do{
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+                print(json)
+                
+                guard let accessToken = json["access_token"] as? String else {
+                    throw NSError(domain: "com.test", code: 564, userInfo: [NSLocalizedDescriptionKey:"No Access Token"])
+                }
+                
+                completion(inner: {return accessToken})
+                
+            }catch let error as NSError{
+                completion(inner: {throw error})
+            }
+        }
+
+    }
+    
+    
 }
 
