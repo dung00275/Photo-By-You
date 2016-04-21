@@ -40,6 +40,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        print("app: \(app)")
+        print("url: \(url)")
+        print("options: \(options)")
+
+        if let sourceApplication = options["UIApplicationOpenURLOptionsSourceApplicationKey"] {
+            
+            if (String(sourceApplication) == "com.apple.SafariViewService") {
+                NSNotificationCenter.defaultCenter().postNotificationName(kCloseSafariViewControllerNotification, object: url)
+                return true
+            }
+        }
+        
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        // just making sure we send the notification when the URL is opened in SFSafariViewController
+        if (sourceApplication == "com.apple.SafariViewService") {
+            NSNotificationCenter.defaultCenter().postNotificationName(kCloseSafariViewControllerNotification, object: url)
+            return true
+        }
+        return true
+    }
 
 
 }
