@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SafariServices
+import ReactiveCocoa
 
 let kCloseSafariViewControllerNotification = "kCloseSafariViewControllerNotification"
 
@@ -60,7 +61,7 @@ extension ViewController:SFSafariViewControllerDelegate{
         lblStatus.text = "Not Login!!!"
         removeHiddenSafariViewController(controller)
     }
-    
+    // MARK: --- Handle From Notification
     func safariLogin(notification:NSNotification){
         defer{
             if let controller = safariController {
@@ -75,20 +76,20 @@ extension ViewController:SFSafariViewControllerDelegate{
             return
         }
         
-        requestAccessToken(code) { (inner) in
-            do{
-                let accessToken = try inner()
-                print(accessToken)
-            }catch let error as NSError{
-                print(error.localizedDescription)
+        requestAccessTokenUsingReactive(code).start{event in
+            switch event{
+                case .Next(let value):
+                    print("Access Token : \(value)")
+                case .Failed(let error):
+                    print(error.localizedDescription)
+                default:
+                    break
             }
-            
             
         }
         
-        
     }
-    
+    // MARK: --- SafariViewController Delegate
     func safariViewController(controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
         print("Did Complete Load")
         delay(0.5) { [weak self] in
@@ -96,7 +97,7 @@ extension ViewController:SFSafariViewControllerDelegate{
         }
         
     }
-    
+    // MARK: --- Animation
     func animationLogin(isPresent:Bool) -> CAAnimationGroup {
         
         let animationTranslation = CABasicAnimation(keyPath: "position.y")
@@ -126,6 +127,7 @@ extension ViewController:SFSafariViewControllerDelegate{
         self.removeSafariController()
     }
     
+    // MARK: --- Delay
     func delay(seconds:Double,block:()->()) {
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * seconds))
         dispatch_after(time, dispatch_get_main_queue(), block)
@@ -182,10 +184,10 @@ extension ViewController{
             }
             
             do{
-                let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
                 print(json)
                 
-                guard let accessToken = json["access_token"] as? String else {
+                guard let accessToken = json?["access_token"] as? String else {
                     throw NSError(domain: "com.test", code: 564, userInfo: [NSLocalizedDescriptionKey:"No Access Token"])
                 }
                 
@@ -196,6 +198,22 @@ extension ViewController{
             }
         }
 
+    }
+    
+    // MARK: --- Reactive Function
+    func requestAccessTokenUsingReactive(code:String)->SignalProducer<String,NSError>{
+        return SignalProducer<String,NSError>{[weak self]observer,dispose in
+            self?.requestAccessToken(code, completion: { (inner) in
+                do{
+                    let result = try inner()
+                    observer.sendNext(result)
+                    observer.sendCompleted()
+                }catch let error as NSError {
+                    observer.sendFailed(error)
+                }
+            })
+            return dispose.dispose()
+        }
     }
     
     

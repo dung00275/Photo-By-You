@@ -16,6 +16,10 @@
 		CF6D63501CC88A39005F347C /* PhotoByYouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D634F1CC88A39005F347C /* PhotoByYouTests.swift */; };
 		CF6D635B1CC88A39005F347C /* PhotoByYouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D635A1CC88A39005F347C /* PhotoByYouUITests.swift */; };
 		CF6D63691CC88A6E005F347C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D63681CC88A6E005F347C /* API.swift */; };
+		CF6D63931CC9D850005F347C /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6D637A1CC9D6E2005F347C /* ReactiveCocoa.framework */; };
+		CF6D63941CC9D850005F347C /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF6D637A1CC9D6E2005F347C /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF6D639A1CC9D8E0005F347C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6D63991CC9D8E0005F347C /* Result.framework */; };
+		CF6D639B1CC9D8E0005F347C /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF6D63991CC9D8E0005F347C /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +37,71 @@
 			remoteGlobalIDString = CF6D63361CC88A39005F347C;
 			remoteInfo = PhotoByYou;
 		};
+		CF6D63751CC9D6E2005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D04725EA19E49ED7006002AA;
+			remoteInfo = "ReactiveCocoa-Mac";
+		};
+		CF6D63771CC9D6E2005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D04725F519E49ED7006002AA;
+			remoteInfo = "ReactiveCocoa-MacTests";
+		};
+		CF6D63791CC9D6E2005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D047260C19E49F82006002AA;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
+		CF6D637B1CC9D6E2005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D047261619E49F82006002AA;
+			remoteInfo = "ReactiveCocoa-iOSTests";
+		};
+		CF6D637D1CC9D6E2005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A9B315541B3940610001CB9C;
+			remoteInfo = "ReactiveCocoa-watchOS";
+		};
+		CF6D637F1CC9D6E2005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57A4D2411BA13D7A00F7D4B1;
+			remoteInfo = "ReactiveCocoa-tvOS";
+		};
+		CF6D63951CC9D850005F347C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D047260B19E49F82006002AA;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CF6D63971CC9D850005F347C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF6D63941CC9D850005F347C /* ReactiveCocoa.framework in Embed Frameworks */,
+				CF6D639B1CC9D8E0005F347C /* Result.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		62393F1E3769A27BA10B8E8B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -53,6 +121,8 @@
 		CF6D635A1CC88A39005F347C /* PhotoByYouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoByYouUITests.swift; sourceTree = "<group>"; };
 		CF6D635C1CC88A39005F347C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF6D63681CC88A6E005F347C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = "ReactiveCocoa-master/ReactiveCocoa.xcodeproj"; sourceTree = "<group>"; };
+		CF6D63991CC9D8E0005F347C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "ReactiveCocoa-master/Carthage/Build/iOS/Result.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +130,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF6D639A1CC9D8E0005F347C /* Result.framework in Frameworks */,
 				AED5C86B927AABB4365B5DE2 /* Pods.framework in Frameworks */,
+				CF6D63931CC9D850005F347C /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +173,8 @@
 		CF6D632E1CC88A39005F347C = {
 			isa = PBXGroup;
 			children = (
+				CF6D63991CC9D8E0005F347C /* Result.framework */,
+				CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */,
 				CF6D63391CC88A39005F347C /* PhotoByYou */,
 				CF6D634E1CC88A39005F347C /* PhotoByYouTests */,
 				CF6D63591CC88A39005F347C /* PhotoByYouUITests */,
@@ -152,6 +226,19 @@
 			path = PhotoByYouUITests;
 			sourceTree = "<group>";
 		};
+		CF6D636D1CC9D6E2005F347C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF6D63761CC9D6E2005F347C /* ReactiveCocoa.framework */,
+				CF6D63781CC9D6E2005F347C /* ReactiveCocoaTests.xctest */,
+				CF6D637A1CC9D6E2005F347C /* ReactiveCocoa.framework */,
+				CF6D637C1CC9D6E2005F347C /* ReactiveCocoaTests.xctest */,
+				CF6D637E1CC9D6E2005F347C /* ReactiveCocoa.framework */,
+				CF6D63801CC9D6E2005F347C /* ReactiveCocoa.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,10 +252,12 @@
 				CF6D63351CC88A39005F347C /* Resources */,
 				0C62A820FBD02E681C554AEE /* Embed Pods Frameworks */,
 				0405921817A6EDEB4D240CC5 /* Copy Pods Resources */,
+				CF6D63971CC9D850005F347C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CF6D63961CC9D850005F347C /* PBXTargetDependency */,
 			);
 			name = PhotoByYou;
 			productName = PhotoByYou;
@@ -245,6 +334,12 @@
 			mainGroup = CF6D632E1CC88A39005F347C;
 			productRefGroup = CF6D63381CC88A39005F347C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CF6D636D1CC9D6E2005F347C /* Products */;
+					ProjectRef = CF6D636C1CC9D6E2005F347C /* ReactiveCocoa.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CF6D63361CC88A39005F347C /* PhotoByYou */,
@@ -253,6 +348,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CF6D63761CC9D6E2005F347C /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = CF6D63751CC9D6E2005F347C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF6D63781CC9D6E2005F347C /* ReactiveCocoaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.xctest;
+			remoteRef = CF6D63771CC9D6E2005F347C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF6D637A1CC9D6E2005F347C /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = CF6D63791CC9D6E2005F347C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF6D637C1CC9D6E2005F347C /* ReactiveCocoaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.xctest;
+			remoteRef = CF6D637B1CC9D6E2005F347C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF6D637E1CC9D6E2005F347C /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = CF6D637D1CC9D6E2005F347C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF6D63801CC9D6E2005F347C /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = CF6D637F1CC9D6E2005F347C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CF6D63351CC88A39005F347C /* Resources */ = {
@@ -369,6 +509,11 @@
 			target = CF6D63361CC88A39005F347C /* PhotoByYou */;
 			targetProxy = CF6D63571CC88A39005F347C /* PBXContainerItemProxy */;
 		};
+		CF6D63961CC9D850005F347C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveCocoa-iOS";
+			targetProxy = CF6D63951CC9D850005F347C /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -481,6 +626,11 @@
 			baseConfigurationReference = C4FCBAEDE4AE49604A287A04 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ReactiveCocoa-master/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PhotoByYou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dungvu.PhotoByYou;
@@ -493,6 +643,11 @@
 			baseConfigurationReference = 62393F1E3769A27BA10B8E8B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ReactiveCocoa-master/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PhotoByYou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dungvu.PhotoByYou;
